@@ -127,8 +127,8 @@ STATIC_URL = "/static/"
 TENCENT_SMS_APP_ID = 6666666
 # 腾讯云短信应用的 app_key
 TENCENT_SMS_APP_KEY = "6666666666666666666666666"
-# python之路
-TENCENT_SMS_SIGN = "python之路"
+# 常竣行的云技术栈
+TENCENT_SMS_SIGN = "常竣行的云技术栈"
 
 TENCENT_SMS_TEMPLATE = {"register": 868322, "login": 868326}
 

@@ -16,3 +16,7 @@
 .account .form-group{
     margin-bottom: 20px;
 }
+.account .error-msg{
+    color: red;
+    position: absolute;
+}

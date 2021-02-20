@@ -10,7 +10,7 @@
 {% block content %}
     <div class="account">
         <div class="title">用户注册</div>
-        <form id="form" method="post" novalidate>
+        <form id="regForm" method="POST" novalidate>
             {% csrf_token %}
             {% for field in form %}
                 {% if field.name == "code" %}
@@ -19,9 +19,11 @@
                         <div class="row">
                             <div class="col-xs-7">
                                 {{ field }}
-                                <span class="error_msg">{{ field.errors.0 }}</span></div>
+                                <span class="error-msg"></span>
+                                {#                                <span class="error_msg">{{ field.errors.0 }}</span>#}
+                            </div>
                             <div class="col-xs-5">
-                                <input id="smsBtn" type="button" class="btn btn-default" value="点击获取验证码">
+                                <input id="btnSms" type="button" class="btn btn-default" value="点击获取验证码">
                             </div>
                         </div>
                     </div>
@@ -29,22 +31,104 @@
                     <div class="form-group">
                         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                         {{ field }}
-                        <span class="error-msg">{{ field.errors.0 }}</span>
+                        {#                        <span class="error-msg">{{ field.errors.0 }}</span>#}
+                        <span class="error-msg"></span>
                     </div>
                 {% endif %}
             {% endfor %}
             <div class="row">
                 <div class="col-xs-3">
-                    <input type="button" class="btn btn-primary" value="注册">
+                    <input id="btnSubmit" type="button" class="btn btn-primary" value="注册">
                 </div>
             </div>
-            {#            <button type="submit" class="btn btn-primary">注册</button>#}
         </form>
-
     </div>
 {% endblock %}
 
 
 {% block js %}
+    {#页面框架加载完后自动执行的函数#}
+    <script>
 
+        $(function () {
+            bindClickBtnSms()
+            bindClickSubmit()
+        })
+
+        function bindClickSubmit() {
+            $('#btnSubmit').click(function () {
+                $('.error-msg').empty()
+                // 收集表单数据(找到每个字段)
+                // 数据ajax到后台
+                $.ajax({
+                    url: '{% url 'register' %}',
+                    type: 'POST',
+                    data: $('#regForm').serialize(), // 一次性批量取数据。包含所有字段的数据，+csrf token
+                    dataType: "JSON",
+                    success: function (res) {
+                        if (res.status) {
+                            location.href = res.data
+                        } else {
+                            $.each(res.error, function (key, value) {
+                                $('#id_' + key).next().text(value[0])
+                            })
+                        }
+                    }
+                })
+            })
+        }
+
+        {#点击获取验证码的按钮绑定事件#}
+
+        function bindClickBtnSms() {
+            $('#btnSms').click(function () {
+                $('.error-msg').empty()
+                // 获取用户输入的手机号
+                // 找到输入框的ID，根据ID获取值，如何找到那个ID？
+                var mobilePhone = $('#id_mobile_phone').val()
+                console.log(mobilePhone)
+
+                // 发送ajax请求
+                $.ajax({
+                        url: '{% url 'send_sms' %}',  // 等价于/send/sms/
+                        type: 'GET',
+                        data: {mobile_phone: mobilePhone, tpl: 'register'},  // 挨个取数据
+                        dataType: "JSON", // 将服务端返回得数据凡系列化为字典
+                        success: function (res) {
+                            console.log(res)
+                            // ajax请求成功之后，自动执行的函数，res就是后端返回的值
+                            if (res.status) {
+                                sendSmsRemind()
+                                {#console.log("发送成功")#}
+                            } else {
+                                {#错误信息#}
+                                console.log(res) // {status:False,error:{mobile_phone:["错误信息",]}}
+                                $.each(res.error, function (key, value) {
+                                    $('#id_' + key).next().text(value[0])
+                                })
+                            }
+                        }
+                    }
+                )
+            })
+        }
+
+        {% comment %}倒计时{% endcomment %}
+
+        function sendSmsRemind() {
+            var $btnSms = $('#btnSms')
+            $btnSms.prop('disabled', true)// 禁用
+            var time = 60
+            var remind = setInterval(function () {
+                $btnSms.val(time + '秒重新发送')
+                time = time - 1
+                if (time < 1) {
+                    clearInterval(remind)
+                    $btnSms.val("点击获取验证码").prop('disabled', false)
+                }
+            }, 1000)
+
+        }
+
+    </script>
 {% endblock %}
