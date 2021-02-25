@@ -1,0 +1,73 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+
+{% block title %} 用户登录 {% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+        .error-msg {
+            color: #ff0000;
+            position: absolute;
+            font-size: 13px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="account">
+        <div class="title">用户登录</div>
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+                {% if field.name == 'code' %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        <div class="row">
+                            <div class="col-xs-7">
+                                {{ field }}
+                                <span class="error-msg">{{ field.errors.0 }}</span>
+                            </div>
+                            <div class="col-xs-5">
+                                <img src="{% url 'web:image_code' %}" id="imageCode" title="点击更换图标">
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        <span class="error-msg">{{ field.errors.0 }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <div>
+                <div style="float: right;">
+                    <a href="{% url 'web:login_sms' %}">短信验证码登录?</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">
+                    <input type="submit" class="btn btn-primary" value="登  录"/>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            $("#imageCode").click(function () {
+                var oldSrc = $(this).attr('src')
+                // 更换URI，实现请求的发送。如原来是：/image/code/?，点击一次验证码图片变成 /image/code/??，
+                // 只是在原来的基础上增加一个？来替换原来的URI，从而发起新的请求
+                $(this).attr('src', oldSrc + "?")
+            })
+        })
+    </script>
+{% endblock %}

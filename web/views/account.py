@@ -1,5 +1,5 @@
-from django.shortcuts import render, HttpResponse
-from web.forms.account import RegisterModelForm, SendSmsForm
+from django.shortcuts import render, HttpResponse, redirect
+from web.forms.account import RegisterModelForm, SendSmsForm, LoginSmsForm, LoginForm
 from django.http import JsonResponse
 from web import models
 
@@ -33,3 +33,93 @@ def send_sms(request):
         return JsonResponse({"status": True})
 
     return JsonResponse({"status": False, "error": form.errors})
+
+
+def login_sms(request):
+    """
+    短信登录
+    """
+    if request.method == "GET":
+        form = LoginSmsForm()
+        return render(request, "login_sms.html", {"form": form})
+
+    form = LoginSmsForm(request.POST)
+    if form.is_valid():
+        # 用户输入正确，登陆成功
+        mobile_phone = form.cleaned_data["mobile_phone"]
+
+        # 用户信息存入session
+        user_obj = models.UserInfo.objects.filter(mobile_phone=mobile_phone).first()
+        request.session["user_id"] = user_obj.id
+        # request.session["user_name"] = user_obj.username
+        request.session.set_expiry(60 * 60 * 24 * 14)
+
+        return JsonResponse({"status": True, "data": "/index/"})
+
+    return JsonResponse({"status": False, "error": form.errors})
+
+
+def login(request):
+    """
+    用户名、密码登录
+    """
+    if request.method == "GET":
+        form = LoginForm(request)
+        return render(request, "login.html", {"form": form})
+    form = LoginForm(request, data=request.POST)
+    if form.is_valid():
+        username = form.cleaned_data["username"]
+        password = form.cleaned_data["password"]
+
+        # user_object = models.UserInfo.objects.filter(
+        #     username=username, password=password
+        # ).first()
+
+        # (手机号=username && pwd=pwd) or (邮箱=username && pwd=pwd)
+        from django.db.models import Q
+
+        user_object = (
+            models.UserInfo.objects.filter(Q(email=username) | Q(mobile_phone=username))
+            .filter(password=password)
+            .first()
+        )
+
+        if user_object:
+            request.session["user_id"] = user_object.id
+            request.session.set_expiry(60 * 60 * 24 * 14)
+            # 用户名 密码正确
+            return redirect("web:index")
+        form.add_error("username", "用户名或密码错误")
+
+    return render(request, "login.html", {"form": form})
+
+
+def image_code(request):
+    """
+    图片验证码
+    """
+    from utils.image_code import check_code
+    from io import BytesIO
+
+    image_object, code = check_code()
+
+    request.session["image_code"] = code
+    # 主动修改session的过期时间为60s
+    request.session.set_expiry(60)
+
+    stream = BytesIO()
+    image_object.save(stream, "png")
+    return HttpResponse(stream.getvalue())
+
+    # with open("code.png", "wb") as f:
+    #     image_object.save(f, format="png")
+    #
+    # with open("code.png", "rb") as f:
+    #     data = f.read()
+    #
+    # return HttpResponse(data)
+
+
+def logout(request):
+    request.session.flush()
+    return redirect("web:index")

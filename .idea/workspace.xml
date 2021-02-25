@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e8b9e0a-9cf8-4b28-a7bc-064934e68333" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/s25/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/s25/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/tencent/sms.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/tencent/sms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/forms/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/forms/account.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/account.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/layout/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/layout/basic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/views/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/account.py" afterDir="false" />
@@ -56,15 +52,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../s25" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/static/img" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\pyproject\s25\web\static\img" />
       <recent name="E:\code\pyproject\s25\web\static\js" />
       <recent name="E:\code\pyproject\s25\web\static\plugin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\code\pyproject\s25\utils" />
+      <recent name="E:\code\pyproject\s25" />
       <recent name="E:\code\pyproject\s25\web\templates" />
       <recent name="E:\code\pyproject\s25\web\templates\web" />
       <recent name="E:\code\pyproject\s25\app01\templates\app01" />
@@ -109,7 +108,9 @@
       <workItem from="1612834765565" duration="21000" />
       <workItem from="1612834832245" duration="25042000" />
       <workItem from="1612869325433" duration="7355000" />
-      <workItem from="1613611817757" duration="38699000" />
+      <workItem from="1613611817757" duration="49222000" />
+      <workItem from="1613990361968" duration="7563000" />
+      <workItem from="1614080332848" duration="16756000" />
     </task>
     <servers />
   </component>
