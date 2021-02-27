@@ -133,6 +133,16 @@ TENCENT_SMS_SIGN = "常竣行的云技术栈"
 
 TENCENT_SMS_TEMPLATE = {"register": 868322, "login": 868326}
 
+
+# 白名单：没有登陆也可以访问的页面
+WHITE_REGEX_URL_LIST = [
+    "/register/",
+    "/send/sms/",
+    "/login/",
+    "/image/code/",
+    "/index",
+]
+
 try:
     from .local_settings import *
 except ImportError:

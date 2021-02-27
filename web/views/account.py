@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from web.forms.account import RegisterModelForm, SendSmsForm, LoginSmsForm, LoginForm
 from django.http import JsonResponse
 from web import models
+import uuid, datetime
 
 
 def register(request):
@@ -15,7 +16,23 @@ def register(request):
     form = RegisterModelForm(data=request.POST)
     if form.is_valid():
         # 验证通过，写入数据库，密码得是密文
-        form.save()
+
+        # 在用户表中新建一条数据（注册）
+        instance = form.save()  # 在数据库中新增一条数据，并将新增的数据赋值给instance
+        # 创建交易记录
+        policy_object = models.PricePolicy.objects.filter(
+            category=1, title="个人免费版"
+        ).first()
+        models.Transation.objects.create(
+            status=2,
+            order=str(uuid.uuid4()),
+            user=instance,
+            price_policy=policy_object,
+            count=0,
+            price=0,
+            start_datetime=datetime.datetime.now(),
+        )
+
         return JsonResponse({"status": True, "data": "/login/"})
 
     return JsonResponse({"status": False, "error": form.errors})

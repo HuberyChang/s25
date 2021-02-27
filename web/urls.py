@@ -1,5 +1,5 @@
 from django.urls import path
-from web.views import account, home
+from web.views import account, home, project
 
 app_name = "web"
 
@@ -11,4 +11,6 @@ urlpatterns = [
     path("index/", home.index, name="index"),
     path("send/sms/", account.send_sms, name="send_sms"),  # 反向解析得是：send_sms
     path("logout/", account.logout, name="logout"),
+    # 项目管理
+    path("project/list/", project.project_list, name="project_list"),
 ]
