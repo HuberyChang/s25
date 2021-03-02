@@ -11,6 +11,7 @@ class Tracer(object):
     def __init__(self):
         self.user = None
         self.price_policy = None
+        self.project = None
 
 
 class AuthMiddleWare(MiddlewareMixin):
@@ -76,3 +77,30 @@ class AuthMiddleWare(MiddlewareMixin):
         #         ).first()
         #     else:
         #         request.price_policy = _object.price_policy
+
+    def process_view(self, request, view, args, kwargs):
+        # 先判断URL是否是以manage开头，判断项目ID是否是  我创建的  或者  我参与的
+        if not request.path_info.startswith("/manage/"):
+            return
+        # project_id 是我创建 或者 我参与的
+        project_id = kwargs.get("project_id")
+
+        # 是否是我创建的
+        project_object = models.Project.objects.filter(
+            creator=request.tracer.user, id=project_id
+        ).first()
+        # 是我创建的项目
+        if project_object:
+            request.tracer.project = project_object
+            return
+
+        # 是否是我参与的
+        project_user_object = models.ProjectUser.objects.filter(
+            user=request.tracer.user, project_id=project_id
+        ).first()
+        # 是我参与的项目
+        if project_user_object:
+            request.tracer.project = project_user_object.project
+            return
+
+        return redirect("web:project_list")
