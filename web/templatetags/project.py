@@ -15,7 +15,7 @@ def all_project_list(request):
     # 2、我参与的所有项目
     join_project_list = models.ProjectUser.objects.filter(user=request.tracer.user)
 
-    return {"my": my_project_list, "join": join_project_list}
+    return {"my": my_project_list, "join": join_project_list, "request": request}
 
 
 # 为了默认选中，把url写在了inclusion

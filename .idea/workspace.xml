@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e8b9e0a-9cf8-4b28-a7bc-064934e68333" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/forms/bootstrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/forms/bootstrap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/middleware/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/middleware/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/static/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/static/css/account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/layout/basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/layout/basic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/layout/manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/layout/manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/inclusion/all_project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/inclusion/all_project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/wiki.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/wiki.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templatetags/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/templatetags/project.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/manage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +148,7 @@
       <workItem from="1613611817757" duration="49222000" />
       <workItem from="1613990361968" duration="7563000" />
       <workItem from="1614080332848" duration="20850000" />
-      <workItem from="1614412506742" duration="57069000" />
+      <workItem from="1614412506742" duration="75504000" />
     </task>
     <servers />
   </component>

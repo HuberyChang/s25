@@ -1,5 +1,5 @@
 from django.urls import path, re_path, include
-from web.views import account, home, project, manage
+from web.views import account, home, project, manage, wiki
 
 app_name = "web"
 
@@ -25,14 +25,16 @@ urlpatterns = [
     ),
     # 项目管理
     re_path(
-        "manage/(?P<project_id>\d+)/",
+        "manage/(?P<project_id>\\d+)/",
         include(
             (
                 [
                     path("dashboard/", manage.dashboard, name="dashboard"),
                     path("issue/", manage.issues, name="issues"),
                     path("statistics/", manage.statistics, name="statistics"),
-                    path("wiki/", manage.wiki, name="wiki"),
+                    path("wiki/", wiki.wiki, name="wiki"),
+                    path("wiki/add/", wiki.wiki_add, name="wiki_add"),
+                    path("wiki/catalog/", wiki.wiki_catalog, name="wiki_catalog"),
                     path("setting/", manage.setting, name="setting"),
                     path("file/", manage.file, name="file"),
                 ],
