@@ -6,10 +6,11 @@
 # 1. 设置用户配置, 包括 secretId，secretKey 以及 Region
 from qcloud_cos import CosConfig
 from qcloud_cos import CosS3Client
+from django.conf import settings
 
 
-secret_id = "AKIDHSUPG1BjMt3BtM9nyzsjaK4as3CBmKK6"  # 替换为用户的 secretId
-secret_key = "qVyViomdv3ufLo5C8qOhojSzJNEvgDVc"  # 替换为用户的 secretKey
+secret_id = settings.TENCENT_COS_ID  # 替换为用户的 secretId
+secret_key = settings.TENCENT_COS_KEY  # 替换为用户的 secretKey
 region = "ap-chengdu"  # 替换为用户的 Region
 
 config = CosConfig(

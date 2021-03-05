@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e8b9e0a-9cf8-4b28-a7bc-064934e68333" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/s25.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/s25.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/s25/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/s25/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/encrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/encrypt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/forms/wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/forms/wiki.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/migrations/0006_wiki_depth.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0006_wiki_depth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/wiki.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/wiki.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/wiki_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/wiki_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/project.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/wiki.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/cos_upload_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cos_upload_demo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +166,7 @@
       <workItem from="1613990361968" duration="7563000" />
       <workItem from="1614080332848" duration="20850000" />
       <workItem from="1614412506742" duration="77929000" />
-      <workItem from="1614753897317" duration="26044000" />
+      <workItem from="1614753897317" duration="27137000" />
     </task>
     <servers />
   </component>
