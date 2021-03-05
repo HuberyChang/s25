@@ -133,6 +133,10 @@ TENCENT_SMS_SIGN = "常竣行的云技术栈"
 
 TENCENT_SMS_TEMPLATE = {"register": 868322, "login": 868326}
 
+# 腾讯cos的ID key
+TENCENT_COS_ID = "COS的secretId"  # 替换为用户的 secretId
+TENCENT_COS_KEY = "COS的secretKey"  # 替换为用户的 secretKey
+
 
 # 白名单：没有登陆也可以访问的页面
 WHITE_REGEX_URL_LIST = [
@@ -142,6 +146,8 @@ WHITE_REGEX_URL_LIST = [
     "/image/code/",
     "/index",
 ]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 try:
     from .local_settings import *

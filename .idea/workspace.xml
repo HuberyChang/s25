@@ -6,13 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="3e8b9e0a-9cf8-4b28-a7bc-064934e68333" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/s25.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/s25.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/s25/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/s25/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/encrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/encrypt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/forms/wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/forms/wiki.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/migrations/0006_wiki_depth.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/migrations/0006_wiki_depth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/inclusion/all_project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/inclusion/all_project_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/wiki.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/wiki.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templatetags/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/templatetags/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/wiki_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/wiki_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/wiki.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -53,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,15 +66,15 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\code\pyproject\s25\scripts" />
+      <recent name="E:\code\pyproject\s25\web\static\plugin" />
       <recent name="E:\code\pyproject\s25\web\templates" />
       <recent name="E:\code\pyproject\s25\web\static\css" />
       <recent name="E:\code\pyproject\s25\web\static\img" />
-      <recent name="E:\code\pyproject\s25\web\static\js" />
-      <recent name="E:\code\pyproject\s25\web\static\plugin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\code\pyproject\s25\utils" />
@@ -79,7 +84,29 @@
       <recent name="E:\code\pyproject\s25\app01\templates\app01" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.init_price_policy">
+  <component name="RunManager" selected="Python.cos_upload_demo">
+    <configuration name="cos_upload_demo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="s25" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/cos_upload_demo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="init_price_policy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="s25" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,6 +154,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.cos_upload_demo" />
         <item itemvalue="Python.init_price_policy" />
       </list>
     </recent_temporary>
@@ -148,7 +176,8 @@
       <workItem from="1613611817757" duration="49222000" />
       <workItem from="1613990361968" duration="7563000" />
       <workItem from="1614080332848" duration="20850000" />
-      <workItem from="1614412506742" duration="75504000" />
+      <workItem from="1614412506742" duration="77929000" />
+      <workItem from="1614753897317" duration="26044000" />
     </task>
     <servers />
   </component>
@@ -169,5 +198,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/s25$init_price_policy.coverage" NAME="init_price_policy Coverage Results" MODIFIED="1614415088444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/s25$cos_upload_demo.coverage" NAME="cos_upload_demo Coverage Results" MODIFIED="1614841767472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>

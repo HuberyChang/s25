@@ -35,6 +35,17 @@ urlpatterns = [
                     path("wiki/", wiki.wiki, name="wiki"),
                     path("wiki/add/", wiki.wiki_add, name="wiki_add"),
                     path("wiki/catalog/", wiki.wiki_catalog, name="wiki_catalog"),
+                    re_path(
+                        "wiki/delete/(?P<wiki_id>\\d+)/",
+                        wiki.wiki_delete,
+                        name="wiki_delete",
+                    ),
+                    re_path(
+                        "wiki/edit/(?P<wiki_id>\\d+)/",
+                        wiki.wiki_edit,
+                        name="wiki_edit",
+                    ),
+                    path("wiki/upload/", wiki.wiki_upload, name="wiki_upload"),
                     path("setting/", manage.setting, name="setting"),
                     path("file/", manage.file, name="file"),
                 ],

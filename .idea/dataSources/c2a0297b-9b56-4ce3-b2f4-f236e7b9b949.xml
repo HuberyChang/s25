@@ -1944,252 +1944,267 @@ model</ColNames>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="629" parent="184" name="web_project_creator_id_169bab95">
+    <column id="629" parent="184" name="bucket">
+      <Position>10</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="630" parent="184" name="region">
+      <Position>11</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="631" parent="184" name="web_project_creator_id_169bab95">
       <ColNames>creator_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="630" parent="184">
+    <key id="632" parent="184">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="631" parent="184">
+    <foreign-key id="633" parent="184">
       <ColNames>creator_id</ColNames>
       <RefTableName>web_userinfo</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="632" parent="185" name="id">
+    <column id="634" parent="185" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="633" parent="185" name="star">
+    <column id="635" parent="185" name="star">
       <Position>2</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="634" parent="185" name="create_datetime">
+    <column id="636" parent="185" name="create_datetime">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="635" parent="185" name="project_id">
+    <column id="637" parent="185" name="project_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="636" parent="185" name="user_id">
+    <column id="638" parent="185" name="user_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="637" parent="185" name="web_projectuser_project_id_aece55c4">
+    <index id="639" parent="185" name="web_projectuser_project_id_aece55c4">
       <ColNames>project_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="638" parent="185" name="web_projectuser_user_id_09fc5a68">
+    <index id="640" parent="185" name="web_projectuser_user_id_09fc5a68">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="639" parent="185">
+    <key id="641" parent="185">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="640" parent="185">
+    <foreign-key id="642" parent="185">
       <ColNames>project_id</ColNames>
       <RefTableName>web_project</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="641" parent="185">
+    <foreign-key id="643" parent="185">
       <ColNames>user_id</ColNames>
       <RefTableName>web_userinfo</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="642" parent="186" name="id">
+    <column id="644" parent="186" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="643" parent="186" name="status">
+    <column id="645" parent="186" name="status">
       <Position>2</Position>
       <DataType>smallint|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="644" parent="186" name="order">
+    <column id="646" parent="186" name="order">
       <Position>3</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="645" parent="186" name="count">
+    <column id="647" parent="186" name="count">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="646" parent="186" name="price">
+    <column id="648" parent="186" name="price">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="647" parent="186" name="start_datetime">
+    <column id="649" parent="186" name="start_datetime">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="648" parent="186" name="end_datetime">
+    <column id="650" parent="186" name="end_datetime">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="649" parent="186" name="create_datetime">
+    <column id="651" parent="186" name="create_datetime">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="650" parent="186" name="price_policy_id">
+    <column id="652" parent="186" name="price_policy_id">
       <Position>9</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="651" parent="186" name="user_id">
+    <column id="653" parent="186" name="user_id">
       <Position>10</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="652" parent="186" name="sqlite_autoindex_web_transation_1">
+    <index id="654" parent="186" name="sqlite_autoindex_web_transation_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>order</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="653" parent="186" name="web_transation_price_policy_id_513d1e3a">
+    <index id="655" parent="186" name="web_transation_price_policy_id_513d1e3a">
       <ColNames>price_policy_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="654" parent="186" name="web_transation_user_id_583b4bea">
+    <index id="656" parent="186" name="web_transation_user_id_583b4bea">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="655" parent="186">
+    <key id="657" parent="186">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="656" parent="186">
+    <key id="658" parent="186">
       <ColNames>order</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_web_transation_1</UnderlyingIndexName>
     </key>
-    <foreign-key id="657" parent="186">
+    <foreign-key id="659" parent="186">
       <ColNames>price_policy_id</ColNames>
       <RefTableName>web_pricepolicy</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="658" parent="186">
+    <foreign-key id="660" parent="186">
       <ColNames>user_id</ColNames>
       <RefTableName>web_userinfo</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="659" parent="187" name="id">
+    <column id="661" parent="187" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="660" parent="187" name="username">
+    <column id="662" parent="187" name="username">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="661" parent="187" name="email">
+    <column id="663" parent="187" name="email">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="662" parent="187" name="mobile_phone">
+    <column id="664" parent="187" name="mobile_phone">
       <Position>4</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="663" parent="187" name="password">
+    <column id="665" parent="187" name="password">
       <Position>5</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="664" parent="187" name="price_policy_id">
+    <column id="666" parent="187" name="price_policy_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="665" parent="187" name="web_userinfo_username_9a491777">
+    <index id="667" parent="187" name="web_userinfo_username_9a491777">
       <ColNames>username</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="666" parent="187" name="web_userinfo_price_policy_id_6cc29aca">
+    <index id="668" parent="187" name="web_userinfo_price_policy_id_6cc29aca">
       <ColNames>price_policy_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="667" parent="187">
+    <key id="669" parent="187">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="668" parent="187">
+    <foreign-key id="670" parent="187">
       <ColNames>price_policy_id</ColNames>
       <RefTableName>web_pricepolicy</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="669" parent="188" name="id">
+    <column id="671" parent="188" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="670" parent="188" name="title">
+    <column id="672" parent="188" name="title">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="671" parent="188" name="content">
+    <column id="673" parent="188" name="content">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="672" parent="188" name="project_id">
+    <column id="674" parent="188" name="project_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="673" parent="188" name="parent_id">
+    <column id="675" parent="188" name="depth">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="674" parent="188" name="web_wiki_project_id_38699919">
+    <column id="676" parent="188" name="parent_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="677" parent="188" name="web_wiki_project_id_38699919">
       <ColNames>project_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="675" parent="188" name="web_wiki_parent_id_1e54b061">
+    <index id="678" parent="188" name="web_wiki_parent_id_1e54b061">
       <ColNames>parent_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="676" parent="188">
+    <key id="679" parent="188">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="677" parent="188">
+    <foreign-key id="680" parent="188">
       <ColNames>project_id</ColNames>
       <RefTableName>web_project</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="678" parent="188">
+    <foreign-key id="681" parent="188">
       <ColNames>parent_id</ColNames>
       <RefTableName>web_wiki</RefTableName>
       <RefColNames>id</RefColNames>
