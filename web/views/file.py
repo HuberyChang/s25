@@ -23,8 +23,19 @@ def file(request, project_id):
         ).first()
 
     if request.method == "GET":
+        queryset = models.FileRepository.objects.filter(project=request.tracer.project)
+        if parent_object:
+            file_object_list = queryset.filter(parent=parent_object).order_by(
+                "-file_type"
+            )
+        else:
+            file_object_list = queryset.filter(parent__isnull=True).order_by(
+                "-file_type"
+            )
         form = FolderModelForm(request, parent_object)
-        return render(request, "file.html", {"form": form})
+        return render(
+            request, "file.html", {"form": form, "file_object_list": file_object_list}
+        )
 
     # 添加文件夹
     form = FolderModelForm(request, parent_object, data=request.POST)

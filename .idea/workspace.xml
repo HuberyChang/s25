@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e8b9e0a-9cf8-4b28-a7bc-064934e68333" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c2a0297b-9b56-4ce3-b2f4-f236e7b9b949.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/file.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/file.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/views/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views/file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +169,7 @@
       <workItem from="1614412506742" duration="77929000" />
       <workItem from="1614753897317" duration="28664000" />
       <workItem from="1614953402367" duration="13922000" />
-      <workItem from="1615946263290" duration="7370000" />
+      <workItem from="1615946263290" duration="9527000" />
     </task>
     <servers />
   </component>
