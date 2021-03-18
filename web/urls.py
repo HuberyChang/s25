@@ -1,5 +1,5 @@
 from django.urls import path, re_path, include
-from web.views import account, home, project, manage, wiki
+from web.views import account, home, project, manage, wiki, file
 
 app_name = "web"
 
@@ -47,7 +47,7 @@ urlpatterns = [
                     ),
                     path("wiki/upload/", wiki.wiki_upload, name="wiki_upload"),
                     path("setting/", manage.setting, name="setting"),
-                    path("file/", manage.file, name="file"),
+                    path("file/", file.file, name="file"),
                 ],
                 "manage",
             ),
