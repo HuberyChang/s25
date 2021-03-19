@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from web.forms.file import FolderModelForm
 from django.http import JsonResponse
 from web import models
+from django.forms import model_to_dict
 
 
 def file(request, project_id):
@@ -22,7 +23,16 @@ def file(request, project_id):
             id=int(folder_id), file_type=2, project=request.tracer.project
         ).first()
 
+    # GET 查看页面
     if request.method == "GET":
+
+        breadcrumb_list = []
+        parent = parent_object
+        while parent:
+            # breadcrumb_list.insert(0, {"id": parent.id, "name": parent.name})
+            breadcrumb_list.insert(0, model_to_dict(parent, ["id", "name"]))
+            parent = parent.parent
+
         queryset = models.FileRepository.objects.filter(project=request.tracer.project)
         if parent_object:
             file_object_list = queryset.filter(parent=parent_object).order_by(
@@ -34,10 +44,16 @@ def file(request, project_id):
             )
         form = FolderModelForm(request, parent_object)
         return render(
-            request, "file.html", {"form": form, "file_object_list": file_object_list}
+            request,
+            "file.html",
+            {
+                "form": form,
+                "file_object_list": file_object_list,
+                "breadcrumb_list": breadcrumb_list,
+            },
         )
 
-    # 添加文件夹
+    # POST 添加文件夹
     form = FolderModelForm(request, parent_object, data=request.POST)
     if form.is_valid():
         form.instance.project = request.tracer.project
