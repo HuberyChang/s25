@@ -80,7 +80,14 @@
                         <td>{{ item.update_user.username }}</td>
                         <td>{{ item.update_datetime }}</td>
                         <td>
-                            <a>编辑</a>
+                            {% if item.file_type == 2 %}
+                                <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#addModal"
+                                   data-name="{{ item.name }}"
+                                   data-fid="{{ item.id }}"
+                                   data-whatever="编辑文件夹">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                            {% endif %}
                             <a>删除</a>
                         </td>
                     </tr>
@@ -102,6 +109,7 @@
 
                     <form id="form">
                         {% csrf_token %}
+                        <input class="hide" type="text" name="fid" id="fid">
                         {% for filed in form %}
                             <div class="form-group">
                                 <div class="form-group">
@@ -138,17 +146,28 @@
             $('#addModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var recipient = button.data('whatever') // Extract info from data-* attributes
+                var name = button.data('name') // Extract info from data-* attributes
+                var fid = button.data('fid') // Extract info from data-* attributes
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
                 modal.find('.modal-title').text(recipient)
 
-                modal.find('.error-msg').empty()
+                if (fid) {
+                    // 编辑
+                    // name
+                    $('#id_name').val(name)
+                    $('#fid').val(fid)
+                } else {
+                    // 新建
+                    modal.find('.error-msg').empty()
+                    {#form表单数据清空#}
+                    {#document.getElementById('form').reset()#}
+                    {#通过jQuery清空表单#}
+                    $('#form')[0].reset()
+                }
 
-                {#form表单数据清空#}
-                {#document.getElementById('form').reset()#}
-                {#通过jQuery清空表单#}
-                $('#form')[0].reset()
+
             })
         }
 

@@ -54,7 +54,21 @@ def file(request, project_id):
         )
 
     # POST 添加文件夹
-    form = FolderModelForm(request, parent_object, data=request.POST)
+
+    fid = request.POST.get("fid", "")
+    edit_object = None
+    if fid.isdecimal():
+        # 修改
+        edit_object = models.FileRepository.objects.filter(
+            id=int(fid), file_type=2, project=request.tracer.project
+        ).first()
+    if edit_object:
+        form = FolderModelForm(
+            request, parent_object, data=request.POST, instance=edit_object
+        )
+    else:
+        form = FolderModelForm(request, parent_object, data=request.POST)
+
     if form.is_valid():
         form.instance.project = request.tracer.project
         form.instance.file_type = 2
