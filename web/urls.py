@@ -48,6 +48,7 @@ urlpatterns = [
                     path("wiki/upload/", wiki.wiki_upload, name="wiki_upload"),
                     path("setting/", manage.setting, name="setting"),
                     path("file/", file.file, name="file"),
+                    path("file/delete/", file.file_delete, name="file_delete"),
                 ],
                 "manage",
             ),

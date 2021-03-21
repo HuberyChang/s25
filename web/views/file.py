@@ -8,6 +8,8 @@ from web import models
 from django.forms import model_to_dict
 
 
+# http://127.0.0.1:8000/manage/6/file/
+# http://127.0.0.1:8000/manage/6/file/?folder=1
 def file(request, project_id):
     """
     文件列表 & 添加文件夹
@@ -78,3 +80,25 @@ def file(request, project_id):
         return JsonResponse({"status": True})
 
     return JsonResponse({"status": False, "error": form.errors})
+
+
+# http://127.0.0.1:8000/manage/6/file/delete/?fid=1
+def file_delete(request, project_id):
+    """
+    删除文件
+    @param project_id:
+    @param request:
+    @return:
+    """
+    fid = request.GET.get("fid")
+
+    # 只删除数据库的  文件&文件夹  （级联删除）
+    delete_object = models.FileRepository.objects.filter(
+        id=fid, project=request.tracer.project
+    ).first()
+    if delete_object.file_type == 1:
+        pass  # 删除文件（数据库文件删除，cos文件删除、项目已使用空间容量还回去）
+    else:
+        pass  # 删除文件夹（找到文件夹下的所有文件->数据库文件删除，cos文件删除、项目已使用空间容量还回去）
+    delete_object.delete()
+    return JsonResponse({"status": True})

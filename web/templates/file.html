@@ -88,7 +88,12 @@
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
                             {% endif %}
-                            <a>删除</a>
+
+                            <a class="btn btn-danger btn-xs" data-toggle="modal" data-target="#alertModal"
+                               data-fid="{{ item.id }}">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+
                         </td>
                     </tr>
                 {% endfor %}
@@ -129,17 +134,34 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4>是否要确定删除？</h4>
+                <p style="padding-top: 20px;padding-bottom: 20px;">
+                    文件夹中包含的所有的文件都会被删除。
+                </p>
+                <p style="text-align: right;">
+                    <a class="btn btn-default btn-sm" data-dismiss="modal" aria-label="Close">取 消</a>
+                    <button id="btnDelete" type="button" class="btn btn-danger btn-sm">确 定</button>
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
     <script>
 
         const FOLDER_URL = "{% url 'web:manage:file' project_id=request.tracer.project.id %}"
+        const FILE_DELETE_URL = "{% url 'web:manage:file_delete' project_id=request.tracer.project.id %}"
 
         $(function () {
             initAddModal()
             bindModelSubmit()
+            bindDeleteSubmit()
         })
 
         function initAddModal() {
@@ -166,9 +188,15 @@
                     {#通过jQuery清空表单#}
                     $('#form')[0].reset()
                 }
+            })
 
+            $('#alertModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var fid = button.data('fid') // Extract info from data-* attributes
+                $('#btnDelete').attr('fid', fid)
 
             })
+
         }
 
         function bindModelSubmit() {
@@ -192,5 +220,20 @@
 
         }
 
+        function bindDeleteSubmit() {
+            $('#btnDelete').click(function () {
+                {#获取要铲除的ID#}
+                $.ajax({
+                    url: FILE_DELETE_URL,
+                    type: 'GET',
+                    data: {fid: $(this).attr('fid')},
+                    success: function (res) {
+                        if (res.status) {
+                            location.href = location.href
+                        }
+                    }
+                })
+            })
+        }
     </script>
 {% endblock %}
