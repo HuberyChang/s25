@@ -137,6 +137,7 @@ TENCENT_SMS_TEMPLATE = {"register": 868322, "login": 868326}
 TENCENT_COS_ID = "COS的secretId"  # 替换为用户的 secretId
 TENCENT_COS_KEY = "COS的secretKey"  # 替换为用户的 secretKey
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # 白名单：没有登陆也可以访问的页面
 WHITE_REGEX_URL_LIST = [
@@ -147,7 +148,6 @@ WHITE_REGEX_URL_LIST = [
     "/index",
 ]
 
-X_FRAME_OPTIONS = "SAMEORIGIN"
 
 try:
     from .local_settings import *

@@ -6,6 +6,7 @@ from web.forms.file import FolderModelForm
 from django.http import JsonResponse
 from web import models
 from django.forms import model_to_dict
+from utils.tencent.cos import delete_file, delete_file_list
 
 
 # http://127.0.0.1:8000/manage/6/file/
@@ -98,7 +99,59 @@ def file_delete(request, project_id):
     ).first()
     if delete_object.file_type == 1:
         pass  # 删除文件（数据库文件删除，cos文件删除、项目已使用空间容量还回去）
-    else:
-        pass  # 删除文件夹（找到文件夹下的所有文件->数据库文件删除，cos文件删除、项目已使用空间容量还回去）
+
+        # 删除文件，将容量还给当前项目已使用空间
+        request.tracer.project.use_space -= delete_object.file_size
+        request.tracer.project.save()
+
+        # cos中删除文件
+        delete_file(
+            request.tracer.project.bucket,
+            request.tracer.project.region,
+            delete_object.key,
+        )
+
+        # 在数据库中删除文件
+        delete_object.delete()
+
+        return JsonResponse({"status": True})
+
+    # 删除文件夹（找到文件夹下的所有文件->数据库文件删除，cos文件删除、项目已使用空间容量还回去）
+    # delete_object
+    # 找到它下面的文件和文件夹
+    # models.FileRepository.objects.filter(parent=delete_object)  是文件就直接删除，文件夹就继续往里找
+
+    total_size = 0
+    key_list = []
+
+    folder_list = [
+        delete_object,
+    ]
+    for folder in folder_list:
+        child_list = models.FileRepository.objects.filter(
+            project=request.tracer.project, parent=folder
+        ).order_by("-file_type")
+        for child in child_list:
+            if child.file_type == 2:
+                folder_list.append(child)
+            else:
+                # 文件大小汇总
+                total_size += child.file_size
+
+                # 删除文件
+                key_list.append({"Key": child.key})
+
+    # cos批量删除
+    if key_list:
+        delete_file_list(
+            request.tracer.project.bucket, request.tracer.project.region, key_list
+        )
+
+    # 归还容量
+    if total_size:
+        request.tracer.project.use_space -= total_size
+        request.tracer.project.save()
+
+        # 删除数据库文件
     delete_object.delete()
     return JsonResponse({"status": True})

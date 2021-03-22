@@ -55,3 +55,41 @@ def upload_file(bucket, region, file_object, key):
     # print(response["ETag"])
     # https://demopy-1303250987.cos.ap-chengdu.myqcloud.com/code.png
     return "https://{}.cos.{}.myqcloud.com/{}".format(bucket, region, key)
+
+
+def delete_file(bucket, region, key):
+    secret_id = settings.TENCENT_COS_ID  # 替换为用户的 secretId
+    secret_key = settings.TENCENT_COS_KEY  # 替换为用户的 secretKey
+
+    config = CosConfig(
+        Region=region,
+        SecretId=secret_id,
+        SecretKey=secret_key,
+    )
+    # 2. 获取客户端对象
+    client = CosS3Client(config)
+
+    client.delete_object(
+        Bucket=bucket,
+        Key=key,  # 上传到桶之后的文件名
+    )
+
+
+def delete_file_list(bucket, region, key_list):
+    secret_id = settings.TENCENT_COS_ID  # 替换为用户的 secretId
+    secret_key = settings.TENCENT_COS_KEY  # 替换为用户的 secretKey
+
+    config = CosConfig(
+        Region=region,
+        SecretId=secret_id,
+        SecretKey=secret_key,
+    )
+    # 2. 获取客户端对象
+    client = CosS3Client(config)
+
+    objects = {"Quiet": "true", "Object": key_list}
+
+    client.delete_objects(
+        Bucket=bucket,
+        Delete=objects,  # 上传到桶之后的文件名
+    )

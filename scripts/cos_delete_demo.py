@@ -24,11 +24,17 @@ config = CosConfig(
 client = CosS3Client(config)
 # 参照下文的描述。或者参照 Demo 程序，详见 https://github.com/tencentyun/cos-python-sdk-v5/blob/master/qcloud_cos/demo.py
 
-# 高级上传接口（推荐）
+#### 高级上传接口（推荐）
 # 根据文件大小自动选择简单上传或分块上传，分块上传具备断点续传功能。
-response = client.upload_file(
+#
+
+# 删除单个文件
+client.delete_object(
     Bucket="demopy-1303250987",
-    LocalFilePath="code.png",
-    Key="code3.png",
+    Key="code1.png",  # 上传到桶之后的文件名
 )
-print(response["ETag"])
+
+# 批量删除
+# objects = {"Quiet": "true", "Object": [{"Key": "code.png"}, {"Key": "code1.png"}]}
+#
+# client.delete_objects(Bucket="demopy-1303250987", Delete=objects)
